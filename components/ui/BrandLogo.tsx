@@ -2,33 +2,75 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 /**
- * BrandLogo — marca visual reutilizable.
+ * BrandLogo — wordmark "Ariel" como imagen + "ESTILISTAS" debajo.
  *
- * Cuando estén disponibles los archivos en /public/images/ariel-logo-{variant}.png
- * cambiar USE_IMAGE_ASSETS a true. El componente cargará el PNG.
- * Mientras tanto, se renderiza un lockup tipográfico inspirado en el logo de referencia:
- * "Ariel" en serif elegante + "ESTILISTAS" espaciado entre dos líneas + marca de tijeras.
+ * Reglas para mantener coherencia con el mockup oficial:
+ *  1. "Ariel" SIEMPRE domina visualmente sobre "ESTILISTAS" (~4–10× más alto).
+ *  2. El gap vertical entre ambos escala proporcional al tamaño del wordmark
+ *     (~14–16% de la altura de "Ariel"), así la relación se ve igual en nav,
+ *     hero y footer.
+ *
+ * Assets esperados en /public/images/ :
+ *   - ariel-estilistas-logo-blanco-sin-tijeras.png  (variant="light")
+ *   - ariel-estilistas-logo-negro-sin-tijeras.png   (variant="dark")
  */
-const USE_IMAGE_ASSETS = false;
+
+const WORDMARK = {
+  light: "/images/ariel-estilistas-logo-blanco-sin-tijeras.png",
+  dark: "/images/ariel-estilistas-logo-negro-sin-tijeras.png",
+} as const;
+
+const USE_IMAGE_ASSETS = true;
 
 type Variant = "light" | "dark";
 type Size = "nav" | "hero" | "footer";
 
-const COLORS: Record<
-  Variant,
-  { word: string; label: string; line: string; mark: string }
+const COLORS: Record<Variant, { word: string; label: string }> = {
+  light: { word: "text-ivory-100", label: "text-champagne-soft" },
+  dark: { word: "text-carbon-800", label: "text-champagne-600" },
+};
+
+const LAYOUT: Record<
+  Size,
+  {
+    wordmark: { width: number; height: number; className: string };
+    label: string;
+    gap: string;
+  }
 > = {
-  light: {
-    word: "text-ivory-100",
-    label: "text-champagne-soft",
-    line: "bg-champagne-400/45",
-    mark: "text-champagne-300/85",
+  // Navbar — "Ariel" claramente dominante; "ESTILISTAS" muy chico y tracking
+  // moderado para no expandirse más que "Ariel".
+  nav: {
+    wordmark: {
+      width: 110,
+      height: 36,
+      className: "h-[30px] w-auto sm:h-[34px]",
+    },
+    label:
+      "text-[0.42rem] tracking-[0.32em] sm:text-[0.46rem] sm:tracking-[0.36em]",
+    gap: "mt-1 sm:mt-[5px]",
   },
-  dark: {
-    word: "text-carbon-800",
-    label: "text-champagne-600",
-    line: "bg-champagne-600/55",
-    mark: "text-champagne-600",
+  // Hero — proporciones del mockup oficial (~10:1 en lg, gap ~15%)
+  hero: {
+    wordmark: {
+      width: 540,
+      height: 180,
+      className: "h-[110px] w-auto sm:h-[150px] md:h-[190px] lg:h-[220px]",
+    },
+    label:
+      "text-sm tracking-[0.5em] sm:text-base sm:tracking-[0.55em] md:text-lg md:tracking-[0.6em] lg:text-xl lg:tracking-[0.65em]",
+    gap: "mt-4 sm:mt-[22px] md:mt-7 lg:mt-8",
+  },
+  // Footer — intermedio
+  footer: {
+    wordmark: {
+      width: 160,
+      height: 56,
+      className: "h-[44px] w-auto sm:h-[50px]",
+    },
+    label:
+      "text-[0.5rem] tracking-[0.42em] sm:text-[0.55rem] sm:tracking-[0.45em]",
+    gap: "mt-[7px] sm:mt-2",
   },
 };
 
@@ -41,64 +83,30 @@ export function BrandLogo({
   size?: Size;
   className?: string;
 }) {
-  if (USE_IMAGE_ASSETS) {
-    return <BrandLogoImage variant={variant} size={size} className={className} />;
-  }
-  if (size === "nav") {
-    return <NavLockup variant={variant} className={className} />;
-  }
-  return <StackedLockup variant={variant} size={size} className={className} />;
-}
+  const layout = LAYOUT[size];
+  const colors = COLORS[variant];
 
-function BrandLogoImage({
-  variant,
-  size,
-  className,
-}: {
-  variant: Variant;
-  size: Size;
-  className?: string;
-}) {
-  const dims =
-    size === "hero"
-      ? { w: 480, h: 320 }
-      : size === "footer"
-        ? { w: 200, h: 140 }
-        : { w: 140, h: 50 };
   return (
-    <Image
-      src={`/images/ariel-logo-${variant}.png`}
-      alt="Ariel Estilistas"
-      width={dims.w}
-      height={dims.h}
-      priority={size === "hero"}
-      className={cn("h-auto w-auto select-none", className)}
-    />
-  );
-}
+    <div className={cn("flex flex-col items-center text-center", className)}>
+      {USE_IMAGE_ASSETS ? (
+        <Image
+          src={WORDMARK[variant]}
+          alt="Ariel"
+          width={layout.wordmark.width}
+          height={layout.wordmark.height}
+          priority={size === "hero"}
+          className={cn("select-none", layout.wordmark.className)}
+        />
+      ) : (
+        <WordmarkFallback variant={variant} size={size} />
+      )}
 
-function NavLockup({
-  variant,
-  className,
-}: {
-  variant: Variant;
-  className?: string;
-}) {
-  const c = COLORS[variant];
-  return (
-    <div className={cn("flex items-baseline gap-2.5", className)}>
       <span
         className={cn(
-          "font-display text-lg font-light leading-none tracking-tight sm:text-xl",
-          c.word,
-        )}
-      >
-        Ariel
-      </span>
-      <span
-        className={cn(
-          "text-[0.6rem] font-medium uppercase tracking-[0.34em] sm:text-[0.65rem]",
-          c.label,
+          "font-medium uppercase",
+          colors.label,
+          layout.label,
+          layout.gap,
         )}
       >
         Estilistas
@@ -107,81 +115,31 @@ function NavLockup({
   );
 }
 
-function StackedLockup({
+/** Fallback tipográfico — sólo se usa si USE_IMAGE_ASSETS=false. */
+function WordmarkFallback({
   variant,
   size,
-  className,
 }: {
   variant: Variant;
   size: Size;
-  className?: string;
 }) {
   const c = COLORS[variant];
-  const isHero = size === "hero";
-
-  const wordSize = isHero
-    ? "text-[3.4rem] sm:text-[4.5rem] md:text-[5.5rem] lg:text-[6.5rem]"
-    : "text-3xl sm:text-[2.2rem]";
-  const labelSize = isHero
-    ? "text-[0.72rem] tracking-[0.48em] sm:text-[0.88rem] sm:tracking-[0.55em]"
-    : "text-[0.58rem] tracking-[0.42em] sm:text-[0.65rem]";
-  const lineSize = isHero ? "w-9 sm:w-14" : "w-5 sm:w-6";
-  const lineGap = isHero ? "gap-3 sm:gap-4" : "gap-2.5";
-  const markSize = isHero ? 22 : 14;
+  const fontSize =
+    size === "hero"
+      ? "text-[3.4rem] sm:text-[4.5rem] md:text-[5.5rem] lg:text-[6.5rem]"
+      : size === "footer"
+        ? "text-3xl sm:text-[2.2rem]"
+        : "text-lg sm:text-xl";
 
   return (
-    <div className={cn("flex flex-col items-center text-center", className)}>
-      <span
-        className={cn(
-          "font-display font-light leading-[0.92] tracking-tight",
-          wordSize,
-          c.word,
-        )}
-      >
-        Ariel
-      </span>
-      <div
-        className={cn(
-          "mt-3 flex items-center justify-center sm:mt-4",
-          lineGap,
-        )}
-      >
-        <span className={cn("h-px", lineSize, c.line)} aria-hidden />
-        <span
-          className={cn(
-            "font-medium uppercase",
-            labelSize,
-            c.label,
-          )}
-        >
-          Estilistas
-        </span>
-        <span className={cn("h-px", lineSize, c.line)} aria-hidden />
-      </div>
-      <span className={cn("mt-3 inline-block", c.mark)} aria-hidden>
-        <CrossedScissors size={markSize} />
-      </span>
-    </div>
-  );
-}
-
-function CrossedScissors({ size = 16 }: { size?: number }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 32 32"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.1"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
+    <span
+      className={cn(
+        "font-display font-light leading-[0.92] tracking-tight",
+        fontSize,
+        c.word,
+      )}
     >
-      <circle cx="9" cy="8" r="3" />
-      <circle cx="23" cy="8" r="3" />
-      <line x1="11.4" y1="10.4" x2="23" y2="24" />
-      <line x1="20.6" y1="10.4" x2="9" y2="24" />
-    </svg>
+      Ariel
+    </span>
   );
 }

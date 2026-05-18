@@ -69,7 +69,7 @@ const localBusinessJsonLd = {
   "@context": "https://schema.org",
   "@type": "HairSalon",
   name: BUSINESS.name,
-  image: `${siteUrl}/og.jpg`,
+  image: `${siteUrl}/opengraph-image`,
   url: siteUrl,
   telephone: BUSINESS.whatsappDisplay,
   address: {

@@ -33,7 +33,7 @@ export const BUSINESS = {
   // Redes / contacto
   instagram: "https://instagram.com/arielestilistas",
   instagramHandle: "@arielestilistas",
-  facebook: "https://www.facebook.com/arielestilistas",
+  facebook: "https://www.facebook.com/p/Ariel-Estilistas-100063888870010/?locale=es_LA",
 
   // Prueba social real
   socialProof: {
