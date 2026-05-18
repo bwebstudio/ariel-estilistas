@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #141210;
+  --foreground: #f5efe6;
+  --line: rgba(201, 168, 117, 0.22);
+  --line-soft: rgba(232, 216, 190, 0.10);
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+::selection {
+  background: rgba(201, 168, 117, 0.28);
+  color: #f5efe6;
+}
+
+@layer utilities {
+  /* Texto champagne plano y moderno — sin gradiente metálico */
+  .text-champagne-soft {
+    color: #d8bc8a;
+  }
+
+  .border-hairline {
+    border-color: var(--line);
+  }
+  .border-hairline-soft {
+    border-color: var(--line-soft);
+  }
+
+  /* Card sutil de servicio */
+  .card-surface {
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid var(--line-soft);
+    transition: border-color 0.4s ease, background-color 0.4s ease;
+  }
+  .card-surface:hover {
+    border-color: rgba(201, 168, 117, 0.32);
+    background: rgba(255, 255, 255, 0.035);
+  }
+
+  /* Fondo radial cálido para secciones (no negro puro) */
+  .bg-warm-section {
+    background:
+      radial-gradient(120% 90% at 50% 0%, #1d1814 0%, #141210 55%, #0f0e0d 100%);
+  }
+
+  .divider-soft {
+    height: 1px;
+    width: 40px;
+    background: rgba(201, 168, 117, 0.45);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #141210;
+}
+::-webkit-scrollbar-thumb {
+  background: #2b261f;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #48413a;
+}
