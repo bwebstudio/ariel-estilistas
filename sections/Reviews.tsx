@@ -1,48 +1,12 @@
-import { Star, ThumbsUp, MessageSquare, Users } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { SectionHeading } from "@/components/ui/SectionLabel";
 import { Reveal } from "@/components/ui/Reveal";
+import { SectionHeading } from "@/components/ui/SectionLabel";
 import { BUSINESS } from "@/lib/constants";
-
-type ProofCard = {
-  value: string;
-  label: string;
-  description: string;
-  icon: LucideIcon;
-};
-
-const { socialProof } = BUSINESS;
-
-const PROOFS: ProofCard[] = [
-  {
-    value: socialProof.facebookRecommended,
-    label: "Recomendado",
-    description: `Sobre ${socialProof.facebookReviews} opiniones publicadas en Facebook.`,
-    icon: ThumbsUp,
-  },
-  {
-    value: `${socialProof.directoryRating}/10`,
-    label: "Valoración",
-    description: `Promedio en directorios locales sobre ${socialProof.directoryReviews} reseñas verificadas.`,
-    icon: Star,
-  },
-  {
-    value: `${socialProof.facebookReviews}`,
-    label: "Opiniones en Facebook",
-    description:
-      "Comentarios y experiencias compartidas por nuestros clientes.",
-    icon: MessageSquare,
-  },
-  {
-    value: socialProof.facebookLikes,
-    label: "Personas nos siguen",
-    description: "Una comunidad que crece de boca en boca en San Miguel.",
-    icon: Users,
-  },
-];
+import { ArrowUpRight, Facebook, Star } from "lucide-react";
 
 export function Reviews() {
+  const { socialProof } = BUSINESS;
+
   return (
     <section
       id="opiniones"
@@ -54,44 +18,63 @@ export function Reviews() {
             eyebrow="Opiniones"
             title={
               <>
-                Clientes que vuelven{" "}
-                <span className="text-champagne-soft">y recomiendan</span>
+                Cuando un cliente vuelve,
+                <br />
+                la <span className="text-champagne-soft">opinión está clara</span>
               </>
             }
-            description="La confianza se construye con cada visita. Estos son los números reales que reflejan años de trabajo en el salón."
           />
         </Reveal>
 
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
-          {PROOFS.map((proof, idx) => (
-            <Reveal
-              key={proof.label}
-              delay={idx * 0.05}
-              as="article"
-              className="card-surface flex flex-col gap-4 rounded-2xl p-6 sm:p-7"
-            >
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.07] text-champagne-soft">
-                <proof.icon size={16} strokeWidth={1.6} />
-              </span>
-              <div>
-                <p className="font-display text-[2rem] font-light leading-none text-champagne-soft sm:text-[2.4rem]">
-                  {proof.value}
-                </p>
-                <p className="mt-3 text-[0.68rem] uppercase tracking-widest2 text-ivory-100/55">
-                  {proof.label}
-                </p>
-              </div>
-              <p className="font-sans text-[0.92rem] leading-relaxed text-ivory-100/65">
-                {proof.description}
-              </p>
-            </Reveal>
-          ))}
-        </div>
+        <Reveal delay={0.08}>
+          <div className="mx-auto mt-12 flex max-w-2xl flex-col items-center text-center sm:mt-14">
+            {/* Cinco estrellas grandes — visual, no técnico */}
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star
+                  key={i}
+                  className="h-6 w-6 fill-champagne-300 text-champagne-300 sm:h-7 sm:w-7"
+                  strokeWidth={1}
+                  aria-hidden
+                />
+              ))}
+            </div>
 
-        <Reveal delay={0.12}>
-          <p className="mx-auto mt-10 max-w-xl text-center text-[0.78rem] uppercase tracking-widest2 text-ivory-100/40">
-            Fuentes: Facebook Ariel Estilistas y fichas locales públicas.
-          </p>
+            {/* Valoración como protagonista */}
+            <p className="mt-7 font-display text-[3rem] font-light leading-none text-ivory sm:text-[3.6rem]">
+              {socialProof.directoryRating}
+              <span className="text-champagne-soft">
+                /{socialProof.directoryBestRating}
+              </span>
+            </p>
+            <p className="mt-3 text-[0.7rem] uppercase tracking-widest2 text-ivory-100/55">
+              Sobre {socialProof.directoryReviews} reseñas en directorios locales
+            </p>
+
+            {/* Copy cálido — sin dashboard de porcentajes */}
+            <p className="mt-9 max-w-lg font-sans text-base leading-relaxed text-ivory-100/80 sm:text-[1.05rem]">
+              Más de {socialProof.directoryReviews} reseñas y{" "}
+              {socialProof.facebookRecommended} de recomendación en Facebook.
+              Una comunidad que crece de boca en boca, porque cuando alguien
+              encuentra su peluquería de confianza, vuelve.
+            </p>
+
+            {/* CTA hacia Facebook para ver las opiniones reales */}
+            <a
+              href={BUSINESS.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mt-9 inline-flex items-center gap-2 text-[0.72rem] font-medium uppercase tracking-widest2 text-champagne-soft transition-colors hover:text-champagne-300"
+            >
+              <Facebook size={14} strokeWidth={1.6} />
+              Ver opiniones en Facebook
+              <ArrowUpRight
+                size={14}
+                strokeWidth={1.6}
+                className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              />
+            </a>
+          </div>
         </Reveal>
       </Container>
     </section>

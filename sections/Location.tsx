@@ -91,7 +91,7 @@ export function Location() {
                 >
                   Reservar por WhatsApp
                 </ButtonLink>
-                <div className="grid grid-cols-2 gap-2.5">
+                <div className="flex flex-col gap-2.5 sm:grid sm:grid-cols-2">
                   <ButtonLink
                     href={BUSINESS.phoneTel}
                     variant="outline"
