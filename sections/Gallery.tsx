@@ -8,35 +8,34 @@ import { whatsappUrl } from "@/lib/constants";
 
 type Shot = { src: string; alt: string; category: string };
 
-// Selección coherente: interior, corte, color, ambiente, detalle, manos trabajando.
 const SHOTS: Shot[] = [
   {
-    src: "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=900&q=80",
+    src: "/images/trabajos/01-styling.jpg",
     alt: "Sesión de styling en el salón",
     category: "Styling",
   },
   {
-    src: "https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=900&q=80",
+    src: "/images/trabajos/02-corte.jpg",
     alt: "Corte profesional",
     category: "Corte",
   },
   {
-    src: "https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=900&q=80",
+    src: "/images/trabajos/03-color.jpg",
     alt: "Coloración natural",
     category: "Color",
   },
   {
-    src: "https://images.unsplash.com/photo-1635273051937-c08b6b3a3afa?auto=format&fit=crop&w=900&q=80",
+    src: "/images/trabajos/04-ambiente.jpg",
     alt: "Interior del salón",
     category: "Ambiente",
   },
   {
-    src: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=900&q=80",
+    src: "/images/trabajos/05-detalle.jpg",
     alt: "Detalle de cabello cuidado",
     category: "Detalle",
   },
   {
-    src: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=900&q=80",
+    src: "/images/trabajos/06-trabajo.jpg",
     alt: "Manos trabajando en el cabello",
     category: "Trabajo",
   },
@@ -69,7 +68,7 @@ export function Gallery() {
               key={shot.src}
               delay={idx * 0.04}
               as="article"
-              className="group relative aspect-[4/5] overflow-hidden rounded-2xl bg-carbon-700"
+              className="group relative aspect-[4/5] overflow-hidden rounded-2xl bg-black"
             >
               <Image
                 src={shot.src}
@@ -80,13 +79,22 @@ export function Gallery() {
                 style={{ filter: "saturate(0.92) sepia(0.06) contrast(1.02)" }}
               />
 
-              {/* Gradiente inferior — refuerza la caption sin oscurecer la imagen */}
+              {/* Vignette superior — masca luces brillantes del techo del salón en el borde alto */}
               <div
-                className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-carbon-900/85 via-carbon-900/30 to-transparent"
+                className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black via-black/40 to-transparent"
+                aria-hidden
+              />
+              {/* Vignette inferior — masca píxeles claros del borde bajo */}
+              <div
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black via-black/40 to-transparent"
+                aria-hidden
+              />
+              {/* Inset ring — cierra los bordes redondeados anti-aliased */}
+              <div
+                className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-black/60"
                 aria-hidden
               />
 
-              {/* Caption editorial siempre visible — número + categoría */}
               <div className="absolute inset-x-5 bottom-5 flex items-end justify-between">
                 <div className="flex flex-col gap-1">
                   <span className="font-display text-[0.95rem] font-light leading-none text-champagne-soft">

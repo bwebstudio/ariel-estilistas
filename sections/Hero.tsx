@@ -17,7 +17,7 @@ export function Hero() {
       {/* Imagen del salón — cálida pero con la luz controlada */}
       <div className="absolute inset-0 -z-20">
         <Image
-          src="https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?auto=format&fit=crop&w=2200&q=85"
+          src="/images/hero/hero-salon.jpg"
           alt={`Interior del salón ${BUSINESS.name} en San Miguel`}
           fill
           priority

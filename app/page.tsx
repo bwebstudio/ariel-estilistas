@@ -4,6 +4,7 @@ import { WhatsappFloating } from "@/components/WhatsappFloating";
 import { Hero } from "@/sections/Hero";
 import { Services } from "@/sections/Services";
 import { About } from "@/sections/About";
+import { Ariel } from "@/sections/Ariel";
 import { Trust } from "@/sections/Trust";
 import { Gallery } from "@/sections/Gallery";
 import { Reviews } from "@/sections/Reviews";
@@ -18,6 +19,7 @@ export default function HomePage() {
         <Hero />
         <Services />
         <About />
+        <Ariel />
         <Trust />
         <Gallery />
         <Reviews />

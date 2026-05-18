@@ -31,16 +31,27 @@ export function About() {
       <Container>
         <div className="grid gap-14 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-20">
           <Reveal className="relative order-2 lg:order-1">
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl">
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-black">
               <Image
-                src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1400&q=80"
-                alt={`Equipo de ${BUSINESS.name} trabajando en el salón`}
+                src="/images/ariel/about-ariel.png"
+                alt={`Ariel trabajando en ${BUSINESS.name}`}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover saturate-[0.85] contrast-[0.98]"
                 style={{ filter: "sepia(0.08)" }}
               />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-carbon-800/35 via-transparent to-transparent" />
+              <div
+                className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black via-black/40 to-transparent"
+                aria-hidden
+              />
+              <div
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black via-black/40 to-transparent"
+                aria-hidden
+              />
+              <div
+                className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-black/60"
+                aria-hidden
+              />
             </div>
 
             <div className="absolute -bottom-6 -right-3 hidden w-60 rounded-xl border border-white/[0.07] bg-carbon-700/90 p-5 backdrop-blur-md sm:block lg:-right-8">
