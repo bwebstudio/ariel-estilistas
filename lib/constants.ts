@@ -23,9 +23,7 @@ export const BUSINESS = {
     { day: "Domingo y lunes", hours: "Cerrado" },
   ],
 
-  // Teléfonos reales encontrados
-  phone: "4664-8498",
-  phoneTel: "tel:46648498",
+  // Contacto vía WhatsApp únicamente
   whatsappDisplay: "+54 11 5640-5444",
   whatsappNumber: "541156405444", // sin + ni símbolos para wa.me
   whatsappMessage: "Hola Ariel Estilistas, quisiera reservar un turno.",

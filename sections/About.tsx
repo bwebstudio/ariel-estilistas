@@ -7,7 +7,7 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { BUSINESS } from "@/lib/constants";
 
 const STATS = [
-  { value: "+20", label: "años de experiencia" },
+  { value: "+35", label: "años de experiencia" },
   {
     value: BUSINESS.socialProof.facebookRecommended,
     label: "recomendado en Facebook",
@@ -56,7 +56,7 @@ export function About() {
 
             <div className="absolute -bottom-6 -right-3 hidden w-60 rounded-xl border border-white/[0.07] bg-carbon-700/90 p-5 backdrop-blur-md sm:block lg:-right-8">
               <p className="font-display text-2xl font-light text-champagne-soft sm:text-3xl">
-                +20 años
+                +35 años
               </p>
               <p className="mt-1 font-sans text-sm text-ivory-100/75">
                 acompañando a clientes en San Miguel.

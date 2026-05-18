@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { MessageCircle, ArrowRight, MapPin, Clock, Phone } from "lucide-react";
+import { MessageCircle, ArrowRight, MapPin, Clock } from "lucide-react";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { BrandLogo } from "@/components/ui/BrandLogo";
@@ -132,9 +132,13 @@ export function Hero() {
               Martes a sábados · 10:00 – 21:00
             </InfoItem>
             <Separator />
-            <InfoItem icon={MapPin}>{BUSINESS.city}, {BUSINESS.province}</InfoItem>
+            <InfoItem icon={MapPin}>
+              {BUSINESS.city}, {BUSINESS.province}
+            </InfoItem>
             <Separator />
-            <InfoItem icon={Phone}>Tel. {BUSINESS.phone}</InfoItem>
+            <InfoItem icon={MessageCircle}>
+              WhatsApp {BUSINESS.whatsappDisplay}
+            </InfoItem>
           </div>
         </Container>
       </motion.div>

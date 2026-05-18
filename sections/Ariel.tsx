@@ -56,7 +56,7 @@ export function Ariel() {
             <Reveal delay={0.1}>
               <div className="mt-5 space-y-4 font-sans text-base leading-relaxed text-ivory-100/75 sm:text-[1.05rem]">
                 <p>
-                  Más de 20 años de oficio en San Miguel. Conoce a cada cliente
+                  Más de 35 años de oficio en San Miguel. Conoce a cada cliente
                   por su nombre y por su pelo: cómo cae, qué le queda mejor,
                   cuánto puede esperar entre visita y visita.
                 </p>

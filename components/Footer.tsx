@@ -1,4 +1,4 @@
-import { Instagram, MessageCircle, Phone, MapPin, Facebook } from "lucide-react";
+import { Instagram, MessageCircle, MapPin, Facebook } from "lucide-react";
 import { BUSINESS, NAV_LINKS, whatsappUrl } from "@/lib/constants";
 import { Container } from "@/components/ui/Container";
 import { BrandLogo } from "@/components/ui/BrandLogo";
@@ -62,15 +62,6 @@ export function Footer() {
                 >
                   <MessageCircle size={15} className="text-champagne-soft" />
                   WhatsApp {BUSINESS.whatsappDisplay}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={BUSINESS.phoneTel}
-                  className="inline-flex items-center gap-2 font-sans text-[0.95rem] text-ivory-100/80 transition-colors hover:text-champagne-soft"
-                >
-                  <Phone size={15} className="text-champagne-soft" />
-                  Tel. {BUSINESS.phone}
                 </a>
               </li>
               <li>

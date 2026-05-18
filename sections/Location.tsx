@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { MapPin, Clock, MessageCircle, Phone, Navigation } from "lucide-react";
+import { MapPin, Clock, MessageCircle, Navigation } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionLabel";
 import { Reveal } from "@/components/ui/Reveal";
@@ -117,12 +117,12 @@ export function Location() {
                   </ul>
                 </InfoRow>
 
-                <InfoRow icon={Phone} label="Contacto">
+                <InfoRow icon={MessageCircle} label="WhatsApp">
                   <p className="font-sans text-base text-ivory">
-                    Tel. {BUSINESS.phone}
+                    {BUSINESS.whatsappDisplay}
                   </p>
-                  <p className="mt-1 font-sans text-[0.95rem] text-ivory-100/75">
-                    WhatsApp {BUSINESS.whatsappDisplay}
+                  <p className="mt-1 font-sans text-[0.95rem] text-ivory-100/65">
+                    Reservá tu turno por WhatsApp.
                   </p>
                 </InfoRow>
               </div>
@@ -136,24 +136,14 @@ export function Location() {
                 >
                   Reservar por WhatsApp
                 </ButtonLink>
-                <div className="flex flex-col gap-2.5 sm:grid sm:grid-cols-2">
-                  <ButtonLink
-                    href={BUSINESS.phoneTel}
-                    variant="outline"
-                    className="w-full"
-                    icon={<Phone size={14} />}
-                  >
-                    Llamar
-                  </ButtonLink>
-                  <ButtonLink
-                    href={mapsDirectionsUrl()}
-                    variant="outline"
-                    className="w-full"
-                    icon={<Navigation size={14} />}
-                  >
-                    Cómo llegar
-                  </ButtonLink>
-                </div>
+                <ButtonLink
+                  href={mapsDirectionsUrl()}
+                  variant="outline"
+                  className="w-full"
+                  icon={<Navigation size={14} />}
+                >
+                  Cómo llegar
+                </ButtonLink>
               </div>
             </div>
           </Reveal>

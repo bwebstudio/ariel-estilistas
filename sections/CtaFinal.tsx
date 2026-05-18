@@ -1,4 +1,4 @@
-import { MessageCircle, Phone } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
@@ -21,27 +21,17 @@ export function CtaFinal() {
               <span className="text-champagne-soft">Ariel Estilistas</span>
             </h2>
             <p className="max-w-xl font-sans text-[1rem] leading-relaxed text-ivory-100/75 sm:text-[1.05rem]">
-              Escribinos o llamanos para coordinar tu próximo corte, color o
+              Escribinos por WhatsApp para coordinar tu próximo corte, color o
               tratamiento. Te respondemos en el horario del salón.
             </p>
-            <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-              <ButtonLink
-                href={whatsappUrl()}
-                variant="primary"
-                className="w-full sm:w-auto"
-                icon={<MessageCircle size={16} />}
-              >
-                Reservar turno
-              </ButtonLink>
-              <ButtonLink
-                href={BUSINESS.phoneTel}
-                variant="outline"
-                className="w-full sm:w-auto"
-                icon={<Phone size={15} />}
-              >
-                Llamar al {BUSINESS.phone}
-              </ButtonLink>
-            </div>
+            <ButtonLink
+              href={whatsappUrl()}
+              variant="primary"
+              className="w-full sm:w-auto"
+              icon={<MessageCircle size={16} />}
+            >
+              Reservar turno
+            </ButtonLink>
             <p className="text-[0.72rem] uppercase tracking-widest2 text-ivory-100/40">
               {BUSINESS.hoursShort}
             </p>
