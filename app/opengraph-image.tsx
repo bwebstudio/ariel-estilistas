@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
-export const alt = "Ariel Estilistas — Salón en San Miguel, Buenos Aires";
+export const alt = "Ariel Estilista — Salón en San Miguel, Buenos Aires";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -50,7 +50,7 @@ export default function OpenGraphImage() {
             marginTop: 8,
           }}
         >
-          Estilistas
+          Estilista
         </div>
 
         {/* Tagline */}

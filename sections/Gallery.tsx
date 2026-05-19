@@ -58,7 +58,7 @@ export function Gallery() {
                 del <span className="text-champagne-soft">salón</span>
               </>
             }
-            description="Una selección de cortes, color y detalles del día a día en Ariel Estilistas."
+            description="Una selección de cortes, color y detalles del día a día en Ariel Estilista."
           />
         </Reveal>
 

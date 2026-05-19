@@ -18,7 +18,7 @@ const STATS = [
   },
   {
     value: BUSINESS.socialProof.facebookLikes,
-    label: "personas siguen Ariel Estilistas",
+    label: "personas siguen Ariel Estilista",
   },
 ];
 
@@ -79,7 +79,7 @@ export function About() {
             <Reveal delay={0.1}>
               <div className="mt-5 space-y-4 font-sans text-base leading-relaxed text-ivory-100/75 sm:text-[1.05rem]">
                 <p>
-                  En Ariel Estilistas acompañamos a nuestros clientes con
+                  En Ariel Estilista acompañamos a nuestros clientes con
                   cortes, coloración y tratamientos pensados para cada
                   persona. Nuestro diferencial está en escuchar, asesorar y
                   cuidar cada detalle para que te sientas cómoda/o con tu

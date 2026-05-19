@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     "coloración",
     "balayage",
     "alisados",
-    "Ariel Estilistas",
+    "Ariel Estilista",
     "peluquería Buenos Aires",
   ],
   authors: [{ name: BUSINESS.name }],

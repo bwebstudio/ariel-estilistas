@@ -2,7 +2,7 @@
  * Datos reales del negocio.
  */
 export const BUSINESS = {
-  name: "Ariel Estilistas",
+  name: "Ariel Estilista",
   tagline: "Color, corte y estilo personalizado en San Miguel",
   shortDescription:
     "Peluquería de confianza en San Miguel, Buenos Aires. Color, corte y tratamientos con años de experiencia y trato cercano.",
@@ -26,7 +26,7 @@ export const BUSINESS = {
   // Contacto vía WhatsApp únicamente
   whatsappDisplay: "+54 11 5640-5444",
   whatsappNumber: "541156405444", // sin + ni símbolos para wa.me
-  whatsappMessage: "Hola Ariel Estilistas, quisiera reservar un turno.",
+  whatsappMessage: "Hola Ariel Estilista, quisiera reservar un turno.",
 
   // Redes / contacto
   instagram: "https://instagram.com/arielestilistas",

@@ -18,7 +18,7 @@ export function CtaFinal() {
             </span>
             <h2 className="font-display text-[1.85rem] font-light leading-[1.12] tracking-tight text-ivory sm:text-4xl md:text-[2.6rem]">
               Reservá tu turno en{" "}
-              <span className="text-champagne-soft">Ariel Estilistas</span>
+              <span className="text-champagne-soft">Ariel Estilista</span>
             </h2>
             <p className="max-w-xl font-sans text-[1rem] leading-relaxed text-ivory-100/75 sm:text-[1.05rem]">
               Escribinos por WhatsApp para coordinar tu próximo corte, color o

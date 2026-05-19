@@ -46,7 +46,7 @@ export function Trust() {
               <span className="text-champagne-soft">se recomiendan</span>.
             </h2>
             <p className="mt-5 max-w-md font-sans text-[1.02rem] leading-relaxed text-ivory-100/75">
-              Ariel Estilistas forma parte de la rutina de muchas personas en
+              Ariel Estilista forma parte de la rutina de muchas personas en
               San Miguel. Un salón cercano, con experiencia y atención
               personalizada, donde cada visita empieza por escuchar lo que
               necesitás.

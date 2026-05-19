@@ -2,10 +2,10 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 /**
- * BrandLogo — wordmark "Ariel" como imagen + "ESTILISTAS" debajo.
+ * BrandLogo — wordmark "Ariel" como imagen + "ESTILISTA" debajo.
  *
  * Reglas para mantener coherencia con el mockup oficial:
- *  1. "Ariel" SIEMPRE domina visualmente sobre "ESTILISTAS" (~4–10× más alto).
+ *  1. "Ariel" SIEMPRE domina visualmente sobre "ESTILISTA" (~4–10× más alto).
  *  2. El gap vertical entre ambos escala proporcional al tamaño del wordmark
  *     (~14–16% de la altura de "Ariel"), así la relación se ve igual en nav,
  *     hero y footer.
@@ -38,7 +38,7 @@ const LAYOUT: Record<
     gap: string;
   }
 > = {
-  // Navbar — "Ariel" claramente dominante; "ESTILISTAS" muy chico y tracking
+  // Navbar — "Ariel" claramente dominante; "ESTILISTA" muy chico y tracking
   // moderado para no expandirse más que "Ariel".
   nav: {
     wordmark: {
@@ -109,7 +109,7 @@ export function BrandLogo({
           layout.gap,
         )}
       >
-        Estilistas
+        Estilista
       </span>
     </div>
   );
