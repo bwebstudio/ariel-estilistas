@@ -16,7 +16,8 @@ const display = Playfair_Display({
   weight: ["400", "500", "600"],
 });
 
-const siteUrl = "https://arielestilistas.com.ar";
+const siteUrl = "https://arielestilista.com";
+const ogImageUrl = `${siteUrl}/opengraph-image`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -43,11 +44,21 @@ export const metadata: Metadata = {
     siteName: BUSINESS.name,
     title: `${BUSINESS.name} — ${BUSINESS.tagline}`,
     description: BUSINESS.shortDescription,
+    images: [
+      {
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
+        alt: `${BUSINESS.name} — Salón en San Miguel`,
+        type: "image/png",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${BUSINESS.name} — ${BUSINESS.tagline}`,
     description: BUSINESS.shortDescription,
+    images: [ogImageUrl],
   },
   robots: {
     index: true,

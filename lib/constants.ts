@@ -23,14 +23,14 @@ export const BUSINESS = {
     { day: "Domingo y lunes", hours: "Cerrado" },
   ],
 
-  // Contacto vía WhatsApp únicamente
+  // Contacto vía WhatsApp
   whatsappDisplay: "+54 11 5640-5444",
   whatsappNumber: "541156405444", // sin + ni símbolos para wa.me
   whatsappMessage: "Hola Ariel Estilista, quisiera reservar un turno.",
 
   // Redes / contacto
-  instagram: "https://instagram.com/arielestilistas",
-  instagramHandle: "@arielestilistas",
+  instagram: "https://www.instagram.com/arielestilista.sanmiguel/",
+  instagramHandle: "@arielestilista.sanmiguel",
   facebook: "https://www.facebook.com/p/Ariel-Estilistas-100063888870010/?locale=es_LA",
 
   // Prueba social real
@@ -44,6 +44,7 @@ export const BUSINESS = {
   },
 } as const;
 
+/** URL para los botones de "Reservar por WhatsApp" — abre el chat con mensaje preset. */
 export const whatsappUrl = (
   message: string = BUSINESS.whatsappMessage,
   number: string = BUSINESS.whatsappNumber,
